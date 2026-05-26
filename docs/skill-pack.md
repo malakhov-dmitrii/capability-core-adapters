@@ -1,11 +1,11 @@
-# Agent Skill Pack
+# Agent skill pack
 
 This repository includes optional skills for Claude Code, Codex, and agents that
 understand `SKILL.md`-style packages.
 
 The docs are the source of truth. Skills are thin procedural entrypoints.
 
-## Included Skills
+## Included skills
 
 ```txt
 skills/
@@ -19,7 +19,7 @@ skills/
     assets/capability-contract.md
 ```
 
-## capability-core-adapters
+## Capability-core-adapters
 
 Use when:
 
@@ -30,7 +30,7 @@ Use when:
 - deciding whether code belongs in app, capability, domain, contracts, platform,
   or shared.
 
-## capability-contract
+## Capability-contract
 
 Use when:
 
@@ -53,12 +53,12 @@ Examples:
 
 or any equivalent skill directory supported by your agent.
 
-## Project-Level Agent Instructions
+## Project-level agent instructions
 
 For agents that read `AGENTS.md`, use the root [AGENTS.md](../AGENTS.md) or copy
 the relevant section from [templates/agents-snippet.md](../templates/agents-snippet.md).
 
-## Design Principle
+## Design principle
 
 Keep skills concise. Put stable reference material in docs. Do not make the
 skill pack the only place where the architecture is explained.

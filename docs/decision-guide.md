@@ -1,15 +1,15 @@
-# Decision Guide
+# Decision guide
 
 Use this guide when it is unclear where code belongs.
 
 First ask whether this project already has a clear architecture. If it does,
 adapt the decision rules to that architecture instead of replacing it.
 
-## Placement Decision Tree
+## Placement decision tree
 
 Ask in order.
 
-### 1. Is this only input/output glue?
+### 1. is this only input/output glue?
 
 Examples:
 
@@ -21,7 +21,7 @@ Examples:
 
 Put it in the app or inbound adapter.
 
-### 2. Is this a user, operator, or business workflow?
+### 2. is this a user, operator, or business workflow?
 
 Examples:
 
@@ -33,7 +33,7 @@ Examples:
 
 Put it in a capability.
 
-### 3. Is this truth, authority, lifecycle, reconciliation, or invariant?
+### 3. is this truth, authority, lifecycle, reconciliation, or invariant?
 
 Examples:
 
@@ -46,7 +46,7 @@ Examples:
 
 Put it in domain.
 
-### 4. Does this cross deployables or async boundaries?
+### 4. does this cross deployables or async boundaries?
 
 Examples:
 
@@ -58,7 +58,7 @@ Examples:
 
 Put it in contracts.
 
-### 5. Does this talk to infrastructure or external SDKs?
+### 5. does this talk to infrastructure or external sdks?
 
 Examples:
 
@@ -71,7 +71,7 @@ Examples:
 
 Put it in platform.
 
-### 6. Is this a primitive with no product meaning?
+### 6. is this a primitive with no product meaning?
 
 Examples:
 
@@ -83,11 +83,11 @@ Examples:
 
 Put it in shared.
 
-### 7. Still unclear?
+### 7. still unclear?
 
 Keep it local to the first capability that needs it. Do not promote early.
 
-## Reuse Decision Tree
+## Reuse decision tree
 
 ### Same visual shape, different meaning
 
@@ -120,7 +120,7 @@ Move schema to contracts.
 
 Duplicate intentionally.
 
-## Promotion Rule
+## Promotion rule
 
 Start local. Promote only when the reason to change is genuinely shared.
 
@@ -133,7 +133,7 @@ local capability code -> capability public API -> domain / contracts / platform 
 Do not move code to `shared` just because it is used twice. Check whether the
 meaning, owner, and reason to change are also shared.
 
-## Capability Contract Trigger
+## Capability contract trigger
 
 Write or update a capability contract when:
 
@@ -148,7 +148,7 @@ Write or update a capability contract when:
 
 Use [the template](../templates/capability-contract.md).
 
-## Existing Architecture Override
+## Existing architecture override
 
 If the project already has a coherent architecture, do not force these names.
 Map the responsibilities instead:

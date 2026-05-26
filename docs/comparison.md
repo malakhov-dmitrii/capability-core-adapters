@@ -1,10 +1,10 @@
-# Comparison With Related Patterns
+# Comparison with related patterns
 
 Capability Core + Adapters is intentionally derivative. It combines useful
 ideas from existing patterns and makes them operational for modern agent-assisted
 full-stack projects.
 
-## Feature-Sliced Design
+## Feature-sliced design
 
 Feature-Sliced Design is useful for frontend structure. It encourages
 feature-oriented organization, public APIs, and dependency direction.
@@ -24,7 +24,7 @@ FSD: frontend slices and layers
 CCA: multi-entrypoint product behavior and full-stack authority
 ```
 
-## Widget Sliced Design
+## Widget sliced design
 
 Widget Sliced Design is a lighter frontend-oriented slicing model.
 
@@ -32,7 +32,7 @@ Capability Core + Adapters can use the same local-first spirit, but does not
 treat UI widgets as the primary boundary once durable state or multiple
 entrypoints are involved.
 
-## Vertical Slice Architecture
+## Vertical slice architecture
 
 Vertical Slice Architecture organizes work by use case instead of technical
 layer.
@@ -47,21 +47,21 @@ Capability Core + Adapters agrees, but adds explicit distinctions between:
 
 This helps when several entrypoints need the same use case.
 
-## Hexagonal Architecture / Ports and Adapters
+## Hexagonal architecture / ports and adapters
 
 Hexagonal Architecture separates core behavior from external systems.
 
 Capability Core + Adapters uses that idea, but makes the "core" product-facing:
 capabilities own workflows, domain owns truth, platform owns concrete adapters.
 
-## Clean Architecture
+## Clean architecture
 
 Clean Architecture provides strong dependency rules.
 
 Capability Core + Adapters is less ceremonial. It is designed to be introduced
 one capability at a time without forcing a full layered rewrite.
 
-## DDD and Bounded Contexts
+## DDD and bounded contexts
 
 DDD is valuable when the domain is complex and language matters.
 
@@ -72,13 +72,13 @@ Capability Core + Adapters uses DDD-lite:
 - bounded contexts when modules grow;
 - service extraction only when operationally justified.
 
-## Modular Monolith
+## Modular monolith
 
 Capability Core + Adapters pairs well with a modular monolith. A bounded context
 can start as a module and later become a service if deployment, scale, security,
 or ownership require it.
 
-## What This Framework Is Not
+## What this framework is not
 
 - not a universal folder tree;
 - not a replacement for framework conventions;

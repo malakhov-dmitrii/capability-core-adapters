@@ -1,6 +1,6 @@
-# Example 01: Next BFF To Multi-Entrypoint
+# Example 01: next BFF to multi-entrypoint
 
-## Starting Point
+## Starting point
 
 A small Next app has one server action:
 
@@ -14,7 +14,7 @@ status for the UI.
 That is acceptable while the web app is the only entrypoint, but it becomes a
 problem when a Telegram bot and retry job need the same behavior.
 
-## Target Shape
+## Target shape
 
 ```txt
 src/
@@ -50,7 +50,7 @@ Retry job          -> recoverBookingLink -> booking policy -> eviivo client
 
 The server action remains an adapter. It does not own booking behavior.
 
-## Migration Steps
+## Migration steps
 
 1. Add tests around the current server action behavior.
 2. Extract the mutation into `createBookingLink`.

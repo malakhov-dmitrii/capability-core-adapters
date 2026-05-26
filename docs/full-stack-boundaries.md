@@ -1,4 +1,4 @@
-# Full-Stack Boundaries
+# Full-stack boundaries
 
 Full-stack frameworks make it easy to put server behavior next to UI. That is
 useful, but location is not ownership.
@@ -11,7 +11,7 @@ Capability Core + Adapters separates:
 - infrastructure adapters;
 - cross-deployable contracts.
 
-## Next.js, TanStack Start, Remix, SvelteKit
+## Next.js, TanStack start, remix, SvelteKit
 
 These frameworks provide server-side entrypoints:
 
@@ -21,7 +21,7 @@ These frameworks provide server-side entrypoints:
 - server functions;
 - server routes.
 
-In this framework they are **inbound adapters**.
+In this framework they are inbound adapters.
 
 They may:
 
@@ -39,7 +39,7 @@ They should not:
 - directly orchestrate several external systems when a capability command should
   own that workflow.
 
-## BFF Mode
+## BFF mode
 
 When the web app is the only client, a full-stack app can act as a
 backend-for-frontend.
@@ -50,7 +50,7 @@ web route/action -> capability -> domain -> platform
 
 This is fine. The important part is that route/action code stays thin.
 
-## Second Entrypoint Rule
+## Second entrypoint rule
 
 When a second entrypoint appears, extract shared behavior immediately.
 
@@ -77,7 +77,7 @@ telegram handler -> createBookingLink()
 cron             -> recoverBookingLink()
 ```
 
-## Monorepo Boundary
+## Monorepo boundary
 
 In a monorepo, prefer conceptual symmetry over identical folders.
 
@@ -94,7 +94,7 @@ packages/platform/eviivo
 Frontend capabilities own UX. Backend modules own durable behavior. Contracts
 own boundaries between deployables.
 
-## Service Boundary
+## Service boundary
 
 Do not split services because folders look separate. Split services when one of
 these is true:
@@ -108,7 +108,7 @@ these is true:
 
 Until then, use a modular monolith.
 
-## Background Jobs
+## Background jobs
 
 Jobs are adapters. They should call the same commands and domain rules as other
 entrypoints.
@@ -133,7 +133,7 @@ public route / MCP tool -> contract validation -> capability command/query
 
 Do not expose internal capability file shapes as public contracts.
 
-## Desktop and Mobile
+## Desktop and mobile
 
 Desktop and mobile clients are separate apps. They should use contracts or
 public command/query APIs rather than importing backend internals.
@@ -142,7 +142,7 @@ If a desktop app has a local backend process, that process is another adapter
 or deployable. Keep its business behavior aligned through shared capabilities,
 domain, and contracts.
 
-## Boundary Formula
+## Boundary formula
 
 ```txt
 Capability-first inside one deployable.

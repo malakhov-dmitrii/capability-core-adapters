@@ -2,7 +2,7 @@
 
 This repository contains documentation, templates, and optional agent skills.
 
-## Agent Skill Safety
+## Agent skill safety
 
 Skills are instruction files. Treat third-party skills as code-adjacent assets:
 

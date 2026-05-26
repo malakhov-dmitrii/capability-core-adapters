@@ -1,6 +1,6 @@
-# Community Post Drafts
+# Community post drafts
 
-## Short Post
+## Short post
 
 I published Capability Core + Adapters, a practical architecture framework for
 apps that start as one full-stack product and later grow APIs, bots, jobs,
@@ -20,7 +20,7 @@ Contracts define boundaries. Platform owns infrastructure.
 It is not a folder religion and not a microservices pitch. It is a decision
 framework for keeping behavior consistent as entrypoints multiply.
 
-## Developer Community Post
+## Developer community post
 
 Frontend feature slicing is helpful until your app stops being just a frontend.
 
@@ -41,7 +41,7 @@ The repo includes docs, examples, templates, optional agent skills, and now a
 limits/failure-modes section so the framework does not pretend to solve every
 architecture problem.
 
-## Agent Community Post
+## Agent community post
 
 I made a small architecture framework plus optional `SKILL.md` packages for
 coding agents.

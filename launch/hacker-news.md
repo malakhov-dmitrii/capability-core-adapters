@@ -1,6 +1,6 @@
-# Hacker News Launch Draft
+# Hacker news launch draft
 
-## Title Options
+## Title options
 
 - Capability Core + Adapters: feature slicing for systems that outgrow one UI
 - Show HN: Capability Core + Adapters, a practical architecture guide for growing apps
@@ -11,20 +11,23 @@
 
 I put together a small architecture framework called Capability Core + Adapters.
 
-It came out of a recurring problem: many products start as a simple full-stack
-app, then grow a Telegram bot, background jobs, public APIs, MCP tools, scripts,
-desktop/mobile clients, and external integrations. The original feature folders
-or framework routes are no longer enough, but jumping straight to heavyweight
-Clean Architecture or microservices is usually overkill.
+It came out of a problem I kept running into: a product starts as a simple
+full-stack app, then adds a Telegram bot, background jobs, public APIs, MCP
+tools, scripts, desktop/mobile clients, and external integrations. The original
+feature folders or framework routes no longer explain ownership, but jumping
+straight to heavyweight Clean Architecture or microservices is usually too much.
 
 This is not meant to be a universal architecture or a replacement for a system
 that already works. It is a sane default for projects that do not yet have clear
 ownership rules, plus a checklist for deciding when not to apply it.
 
-The core rule is:
+The operating rule in the repo is:
 
-> Many entrypoints. One capability core. Domain owns truth. Adapters stay thin.
-> Contracts define boundaries. Platform owns infrastructure.
+- entrypoints are adapters;
+- capability commands and queries own workflow behavior;
+- domain modules own durable rules;
+- contracts define deployable and async boundaries;
+- platform modules own infrastructure calls.
 
 The repo includes:
 

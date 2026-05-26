@@ -1,4 +1,4 @@
-# Example 04: First Adoption Run
+# Example 04: first adoption run
 
 This fictional example shows how to try the framework without committing to a
 full architecture migration.
@@ -38,7 +38,7 @@ apps/worker/src/jobs/retry-booking-link.ts
   writes db directly
 ```
 
-## First Capability Contract
+## First capability contract
 
 ```txt
 docs/capabilities/booking-link.md
@@ -76,7 +76,7 @@ Non-goals:
 - provider admin configuration
 ```
 
-## Smallest Useful Change
+## Smallest useful change
 
 Extract one command:
 
@@ -94,7 +94,7 @@ telegram handler -> createBookingLink()
 The retry job can stay unchanged for the first PR if that keeps the slice small,
 but the contract should name it as a remaining entrypoint.
 
-## After First PR
+## After first PR
 
 ```txt
 apps/web/app/bookings/actions.ts
@@ -135,7 +135,7 @@ adapter smoke:
 - bot handler calls command
 ```
 
-## What Not To Do
+## What not to do
 
 Do not:
 

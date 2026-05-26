@@ -1,4 +1,4 @@
-# Repository Metadata
+# Repository metadata
 
 ## Description
 
@@ -24,7 +24,7 @@ bots, workers, jobs, MCP tools, scripts, mobile, and desktop clients.
 - codex
 - skill-md
 
-## Social Preview Copy
+## Social preview copy
 
-Many entrypoints. One capability core. Domain owns truth. Adapters stay thin.
-
+Architecture guidance for projects where web, API, bot, job, script, MCP,
+mobile, or desktop entrypoints need one shared behavior core.

@@ -1,11 +1,11 @@
-# Method Fit Checklist
+# Method fit checklist
 
 Use this checklist before adopting Capability Core + Adapters in a project.
 
 The goal is to decide whether the framework is a good default, a partial fit, or
 not needed.
 
-## 1. Existing Architecture
+## 1. existing architecture
 
 - Does the project already have a coherent architecture?
 - Can the current architecture explain ownership?
@@ -15,7 +15,7 @@ not needed.
 
 If yes, do not replace it. Borrow only useful rules.
 
-## 2. Entrypoints
+## 2. entrypoints
 
 Which entrypoints exist or are likely soon?
 
@@ -30,7 +30,7 @@ Which entrypoints exist or are likely soon?
 
 The more entrypoints share behavior, the better the fit.
 
-## 3. Durable Truth
+## 3. durable truth
 
 Does the project have state that must remain consistent across entrypoints?
 
@@ -46,7 +46,7 @@ Does the project have state that must remain consistent across entrypoints?
 
 If yes, domain and capability boundaries matter.
 
-## 4. Current Pain
+## 4. current pain
 
 Which pain is real?
 
@@ -59,7 +59,7 @@ Which pain is real?
 
 If none of these are real, adoption can wait.
 
-## 5. Team And Agent Context
+## 5. team and agent context
 
 - Will multiple people or agents work in the project?
 - Do they need a shared default?
@@ -68,9 +68,9 @@ If none of these are real, adoption can wait.
 
 If yes, this framework can reduce drift.
 
-## 6. Fit Verdict
+## 6. fit verdict
 
-### Good Default
+### Good default
 
 Use Capability Core + Adapters as the project default when:
 
@@ -79,7 +79,7 @@ Use Capability Core + Adapters as the project default when:
 - durable truth matters;
 - agents or multiple contributors need guidance.
 
-### Partial Fit
+### Partial fit
 
 Use selected parts when:
 
@@ -88,7 +88,7 @@ Use selected parts when:
 - the project has a strong domain model but weak adapter discipline;
 - only agent instructions need hardening.
 
-### Poor Fit
+### Poor fit
 
 Do not adopt as a default when:
 
@@ -97,7 +97,7 @@ Do not adopt as a default when:
 - the team already has a coherent method;
 - the main issue is product discovery, not code structure.
 
-## Adoption Rule
+## Adoption rule
 
 If fit is uncertain, apply the framework to one active capability only. Do not
 run a global migration.

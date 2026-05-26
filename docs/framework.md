@@ -10,16 +10,24 @@ It deliberately avoids two failure modes:
 - heavyweight architecture ceremony before the product needs it.
 
 It is meant to be a sane default when a project has no better architecture. It
-is not meant to replace a coherent architecture that already works.
+is not meant to replace a coherent architecture that already answers the ownership question.
 
-## Core Sentence
+## Operating rule
 
-Many entrypoints. One capability core. Domain owns truth. Adapters stay thin.
-Contracts define boundaries. Platform owns infrastructure.
+Use this as the operating rule for projects that adopt the framework:
 
-## Responsibility Map
+```txt
+Many entrypoints.
+One capability core.
+Domain owns truth.
+Adapters stay thin.
+Contracts define boundaries.
+Platform owns infrastructure.
+```
 
-### Apps / Inbound Adapters
+## Responsibility map
+
+### Apps / inbound adapters
 
 Apps are ways into the system:
 
@@ -127,7 +135,7 @@ Shared owns primitives:
 
 Shared must not become a hiding place for unclear product semantics.
 
-## Adoption Principle
+## Adoption principle
 
 Adopt the framework by strengthening ownership, not by renaming folders.
 
@@ -146,7 +154,7 @@ Bad adoption:
 - existing coherent architecture is replaced without a concrete pain;
 - every small UI piece becomes a capability.
 
-## Default Flow
+## Default flow
 
 ```txt
 inbound adapter -> capability command/query/workflow -> domain -> platform
@@ -162,7 +170,7 @@ Trigger.dev job    -> recoverBookingLink -> booking policy -> eviivo client
 
 The entrypoints differ. The capability and domain stay consistent.
 
-## Minimal Layout
+## Minimal layout
 
 ```txt
 src/
@@ -176,7 +184,7 @@ src/
 Use this for one deployable. Do not add empty folders just to satisfy the
 framework.
 
-## Monorepo Layout
+## Monorepo layout
 
 ```txt
 apps/
@@ -198,7 +206,7 @@ packages/
 
 Move code into `packages/` only when multiple deployables need it.
 
-## Backend-Heavy Layout
+## Backend-heavy layout
 
 When the product becomes mostly backend behavior, organize by bounded context or
 module:
@@ -218,7 +226,7 @@ A bounded context does not have to become a microservice. Start with modules.
 Extract services only when deployment, scaling, ownership, or security require
 it.
 
-## Source-Of-Truth Rule
+## Source-of-truth rule
 
 Every capability that displays or mutates important derived state must answer:
 
@@ -233,7 +241,7 @@ Every capability that displays or mutates important derived state must answer:
 If this cannot be answered, keep implementation narrow or write a capability
 contract first.
 
-## Default, Not Mandate
+## Default, not mandate
 
 Use this framework as:
 
@@ -250,7 +258,7 @@ Do not use it as:
 - a substitute for domain discovery;
 - a way to avoid stack-specific best practices.
 
-## Anti-Patterns
+## Anti-patterns
 
 - route handlers containing business rules;
 - server actions treated as the whole backend;
@@ -262,7 +270,7 @@ Do not use it as:
 - platform SDK calls scattered through capabilities;
 - backend modules shaped only around one frontend screen.
 
-## Done Criteria
+## Done criteria
 
 A slice follows this framework when:
 

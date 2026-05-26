@@ -17,7 +17,7 @@ Contracts define boundaries.
 Platform owns infrastructure.
 ```
 
-## The Problem
+## The problem
 
 Most projects begin simply:
 
@@ -60,7 +60,7 @@ This posture is aligned with small-step, behavior-preserving refactoring and
 avoid-hasty-abstraction guidance: change one concrete slice, test it, and avoid
 promoting abstractions before the reason to change is clear.
 
-## The Model
+## The model
 
 ```txt
 apps / inbound adapters
@@ -92,7 +92,7 @@ inbound adapter -> capability command/query -> domain -> platform
 The web app, bot, public API, and worker may all call the same capability
 command. They should not each invent their own business logic.
 
-## Quick Start
+## Quick start
 
 For a small full-stack app:
 
@@ -127,7 +127,7 @@ packages/
 The recommended adoption path is local first. Promote code only when the reason
 to change is genuinely shared.
 
-## What Makes This Different
+## What makes this different
 
 This repo does not present Capability Core + Adapters as "Feature-Sliced Design
 for the backend" or as a strict Clean Architecture template.
@@ -144,7 +144,7 @@ It is an ownership framework:
 That distinction matters when a project grows from one UI into several clients,
 jobs, scripts, APIs, and external integrations.
 
-## When To Use It
+## When to use it
 
 Use it when:
 
@@ -160,7 +160,7 @@ Use it when:
 Do not use it as an excuse for a global folder reshuffle. Apply it one
 capability at a time.
 
-## When Not To Use It
+## When not to use it
 
 Do not force this framework when:
 
@@ -197,7 +197,7 @@ Do not force this framework when:
 - [Agent instructions snippet](templates/agents-snippet.md)
 - [Architecture decision record](templates/adr.md)
 
-## Optional Agent Skills
+## Optional agent skills
 
 This repository includes optional `SKILL.md` packages for Claude Code, Codex,
 and compatible coding agents:
@@ -211,12 +211,12 @@ skills/
 The docs are the source of truth. Skills are thin entrypoints that help agents
 apply the framework consistently.
 
-## One-Sentence Rule
+## One-sentence rule
 
 Every new entrypoint is an adapter. It may call existing capability commands and
 queries, but it does not get to invent a new copy of the business logic.
 
-## Further Reading
+## Further reading
 
 - [Martin Fowler: Refactoring](https://refactoring.com/)
 - [Kent C. Dodds: AHA Programming](https://kentcdodds.com/blog/aha-programming)

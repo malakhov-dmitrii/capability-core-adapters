@@ -1,4 +1,4 @@
-# Example 02: Shared UI, Different Semantics
+# Example 02: shared ui, different semantics
 
 ## Problem
 
@@ -22,7 +22,7 @@ kind="capital-review" | "telegram-login" | "booking-ready"
 
 That makes the component visually reusable but semantically confused.
 
-## Better Shape
+## Better shape
 
 ```txt
 shared/ui/StatusPanel.tsx

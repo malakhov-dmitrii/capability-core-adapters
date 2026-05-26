@@ -1,4 +1,4 @@
-# Getting Started
+# Getting started
 
 Use this guide when you want to try Capability Core + Adapters on a real project
 without doing a rewrite.
@@ -11,7 +11,7 @@ the same bias as small-step refactoring and avoid-hasty-abstraction guidance:
 change one concrete behavior, preserve behavior with tests, and delay promotion
 until reuse has a clear reason.
 
-## 0. Start With Fit
+## 0. start with fit
 
 Before moving files, answer:
 
@@ -24,7 +24,7 @@ Before moving files, answer:
 If the answer is mostly no, do not adopt yet. Read
 [method-fit-checklist.md](method-fit-checklist.md) and stop.
 
-## 1. Pick One Capability
+## 1. pick one capability
 
 Choose one active behavior, not a whole project.
 
@@ -43,7 +43,7 @@ Bad first candidates:
 - a new package layout without behavior changes;
 - a speculative future service split.
 
-## 2. Name It In Product Language
+## 2. name it in product language
 
 Use a name a product person or operator would understand:
 
@@ -66,7 +66,7 @@ services
 modals
 ```
 
-## 3. Map Entrypoints
+## 3. map entrypoints
 
 List every way the behavior is invoked:
 
@@ -83,7 +83,7 @@ MCP/public tool:
 For a first trial, prefer a local change when there is only one entrypoint and
 no durable truth to protect.
 
-## 4. Write A Small Capability Contract
+## 4. write a small capability contract
 
 Copy the template:
 
@@ -110,11 +110,11 @@ Minimum required sections:
 If source of truth or authority is unclear, stop broad implementation. Clarify
 the contract first.
 
-## 5. Choose One Intervention
+## 5. choose one intervention
 
 Pick the smallest useful change.
 
-### Thin An Adapter
+### Thin an adapter
 
 Before:
 
@@ -129,7 +129,7 @@ route handler -> command
 command       -> domain rule -> platform adapter
 ```
 
-### Share A Workflow
+### Share a workflow
 
 Before:
 
@@ -147,7 +147,7 @@ bot        -> createThing()
 job        -> recoverThing()
 ```
 
-### Split Visual Reuse From Meaning
+### Split visual reuse from meaning
 
 Before:
 
@@ -162,7 +162,7 @@ shared/ui/StatusPanel
 capabilities/<name>/ui/<MeaningfulStatus>
 ```
 
-### Move Durable Truth To Domain
+### Move durable truth to domain
 
 Before:
 
@@ -177,7 +177,7 @@ domain policy calculates status
 UI displays view model and provenance
 ```
 
-## 6. Test The Boundary
+## 6. test the boundary
 
 At minimum:
 
@@ -189,7 +189,7 @@ At minimum:
 Do not claim adoption because files moved. Claim it only when behavior is proven
 through the new boundary.
 
-## 7. Commit The Slice
+## 7. commit the slice
 
 For this method, a useful first adoption commit says:
 
@@ -199,7 +199,7 @@ For this method, a useful first adoption commit says:
 - what was tested;
 - what was intentionally not migrated.
 
-## Agent Prompt
+## Agent prompt
 
 Use this prompt with a coding agent:
 
@@ -221,7 +221,7 @@ Do not perform a global folder reshuffle.
 Verify with focused tests and report remaining risks.
 ```
 
-## Success Criteria
+## Success criteria
 
 Treat the first run as useful when:
 
@@ -234,7 +234,7 @@ Treat the first run as useful when:
 If that does not happen, do not force the framework on this slice. Stop and
 reassess the fit.
 
-## Further Reading
+## Further reading
 
 - [Martin Fowler: Refactoring](https://refactoring.com/)
 - [Kent C. Dodds: AHA Programming](https://kentcdodds.com/blog/aha-programming)

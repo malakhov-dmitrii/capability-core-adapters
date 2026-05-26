@@ -3,7 +3,7 @@
 Capability Core + Adapters is a practical framework. Contributions should make
 it easier to apply in real projects.
 
-## Good Contributions
+## Good contributions
 
 - clearer decision rules;
 - real-world examples;
@@ -19,7 +19,7 @@ it easier to apply in real projects.
 - adding ceremony that is not needed for small projects;
 - promoting microservices before modular boundaries are clear.
 
-## Pull Request Checklist
+## Pull request checklist
 
 - [ ] The change preserves the core model.
 - [ ] Examples are concrete.

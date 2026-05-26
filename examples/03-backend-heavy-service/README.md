@@ -1,4 +1,4 @@
-# Example 03: Backend-Heavy Service
+# Example 03: backend-heavy service
 
 ## Context
 
@@ -10,7 +10,7 @@ The product started as a web app, but now most behavior is backend-owned:
 - MCP tools;
 - lightweight admin UI.
 
-## Target Shape
+## Target shape
 
 ```txt
 apps/
@@ -52,7 +52,7 @@ MCP tool      -> booking query   -> booking domain -> platform
 admin UI      -> contract/API    -> booking command/query
 ```
 
-## Service Extraction
+## Service extraction
 
 Extract a module into a service only when:
 

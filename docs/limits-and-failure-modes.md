@@ -1,4 +1,4 @@
-# Limits And Failure Modes
+# Limits and failure modes
 
 Capability Core + Adapters is a default, not a cure-all.
 
@@ -8,7 +8,7 @@ duplicating business logic, or turning `shared` into a junk drawer.
 
 If it becomes ceremony, it has failed.
 
-## What The Framework Optimizes For
+## What the framework optimizes for
 
 It optimizes for:
 
@@ -30,7 +30,7 @@ It does not optimize for:
 - organization charts and team topology;
 - replacing framework conventions.
 
-## Failure Mode: Folder Religion
+## Failure mode: folder religion
 
 Symptom:
 
@@ -46,7 +46,7 @@ Correction:
 - move behavior only when it clarifies ownership;
 - keep existing architecture if it already works.
 
-## Failure Mode: Capability Sprawl
+## Failure mode: capability sprawl
 
 Symptom:
 
@@ -61,7 +61,7 @@ Correction:
 - keep primitives in shared;
 - use capability contracts only for meaningful ownership boundaries.
 
-## Failure Mode: Fake Shared
+## Failure mode: fake shared
 
 Symptom:
 
@@ -76,7 +76,7 @@ Correction:
 - move true business rules to domain;
 - duplicate intentionally when reasons to change differ.
 
-## Failure Mode: Route-Owned Backend
+## Failure mode: route-owned backend
 
 Symptom:
 
@@ -90,7 +90,7 @@ Correction:
 - extract commands, queries, and workflows;
 - make every entrypoint call the same core behavior.
 
-## Failure Mode: Domain Theater
+## Failure mode: domain theater
 
 Symptom:
 
@@ -106,7 +106,7 @@ Correction:
 - if a rule cannot be tested without the framework, it probably is not domain
   yet.
 
-## Failure Mode: Premature Contracts
+## Failure mode: premature contracts
 
 Symptom:
 
@@ -121,7 +121,7 @@ Correction:
 - keep one-deployable projects simple;
 - promote only when a real second consumer appears.
 
-## Failure Mode: Over-Extracted Platform
+## Failure mode: over-extracted platform
 
 Symptom:
 
@@ -135,7 +135,7 @@ Correction:
   authority-sensitive;
 - do not abstract stable one-off infrastructure only for aesthetics.
 
-## Failure Mode: Agent Overreach
+## Failure mode: agent overreach
 
 Symptom:
 
@@ -151,7 +151,7 @@ Correction:
   better one;
 - agents must write capability contracts before risky cross-entrypoint work.
 
-## Failure Mode: Microservice Drift
+## Failure mode: microservice drift
 
 Symptom:
 
@@ -166,16 +166,15 @@ Correction:
   operational isolation;
 - do not confuse folder boundaries with service boundaries.
 
-## The Hard Stop Rule
+## The hard stop rule
 
 Stop applying the framework when:
 
 - the source of truth is unknown;
 - the proposed slice cannot explain authority;
-- a migration would touch many unrelated areas;
+- a proposed migration touches unrelated areas;
 - tests cannot prove the invariant being moved;
 - existing architecture already answers the ownership question better.
 
 In those cases, narrow the work, write a capability contract, or keep the
 existing architecture.
-
