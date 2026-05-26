@@ -63,6 +63,17 @@ The default agent move is to reuse or extract a shared command/query path. Do
 not copy business behavior into a new route, bot handler, job, MCP tool, or
 script.
 
+## Optional workflow levels
+
+Use direct execution for small local slices. Use planned execution when behavior
+touches durable state, several entrypoints, jobs, public APIs, or contracts.
+Use TDD for bug fixes and domain rule changes. Use team or subagent workflows
+only when exploration, implementation, review, or verification can happen in
+separate lanes.
+
+Before finishing, report changed files, touched capability and entrypoints,
+contract changes, verification results, and remaining risks.
+
 ## Optional retrieval tools
 
 If `context-mode` is available, use it for broad repo inspection, large command

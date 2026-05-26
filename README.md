@@ -287,6 +287,7 @@ Do not force this framework when:
 - [Getting started](docs/getting-started.md)
 - [Problem map](docs/problem-map.md)
 - [Agent operating model](docs/agent-operating-model.md)
+- [Agent workflows](docs/agent-workflows.md)
 - [Agent tooling](docs/agent-tooling.md)
 - [Framework](docs/framework.md)
 - [Full-stack boundaries](docs/full-stack-boundaries.md)
@@ -309,6 +310,7 @@ Do not force this framework when:
 - [Capability contract](templates/capability-contract.md)
 - [Adoption checklist](templates/adoption-checklist.md)
 - [Agent instructions snippet](templates/agents-snippet.md)
+- [Agent workflow block](templates/agent-workflow-block.md)
 - [Agent tooling block](templates/agent-tooling-block.md)
 - [Architecture decision record](templates/adr.md)
 

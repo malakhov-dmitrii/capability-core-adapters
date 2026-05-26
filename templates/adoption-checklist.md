@@ -28,6 +28,8 @@ Use this checklist when introducing Capability Core + Adapters into a project.
 
 - [ ] Add framework docs.
 - [ ] Add agent protocol or AGENTS.md snippet.
+- [ ] Add optional agent-workflow block if the project needs staged execution,
+      TDD, review, or subagents.
 - [ ] Add optional agent-tooling block if the project uses context or graph
       retrieval tools.
 - [ ] Add capability contract template.

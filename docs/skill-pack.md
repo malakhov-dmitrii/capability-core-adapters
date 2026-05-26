@@ -63,6 +63,10 @@ For multi-agent or long-running work, also read
 `discover -> classify -> contract -> change -> verify -> record` loop and the
 agent failure modes this framework is meant to prevent.
 
+For work that needs planning, TDD, review, or subagents, also read
+[Agent workflows](agent-workflows.md). It describes process levels from direct
+slices to planned, TDD, team, and recovery workflows.
+
 For projects using context-oriented or graph-oriented retrieval tools, also read
 [Agent tooling](agent-tooling.md). It describes how `context-mode` and
 `CodeGraph` support discovery and impact checks without becoming architecture

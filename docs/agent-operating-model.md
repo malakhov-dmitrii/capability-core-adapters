@@ -13,6 +13,10 @@ For projects that need stronger retrieval, pair this routine with
 [agent-tooling.md](agent-tooling.md). Tooling is optional. The ownership model
 must still work when no special tools are installed.
 
+For longer or higher-risk work, pair this routine with
+[agent-workflows.md](agent-workflows.md). Workflow is optional ceremony until it
+protects a real slice.
+
 ## The agent problem
 
 Typical drift:

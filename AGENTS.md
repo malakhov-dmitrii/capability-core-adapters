@@ -104,6 +104,23 @@ Prove the shared behavior and at least one touched adapter path.
 Leave the updated contract, test evidence, remaining bypass paths, and known
 risks in the final report.
 
+## Workflow levels
+
+Use the lightest process that protects the change:
+
+- direct slice: small local change;
+- planned slice: durable behavior, several entrypoints, jobs, public APIs, or
+  contracts;
+- TDD slice: bug fix, domain rule, lifecycle, reconciliation, or command/query
+  contract change;
+- team slice: independent exploration, implementation, review, or verification
+  lanes;
+- recovery slice: broken build, failed migration, stale contract, or
+  cross-entrypoint drift.
+
+For team or subagent work, keep one integration owner. Do not let two agents
+change the same capability contract or command path independently.
+
 ## Layer rules
 
 ### Apps / inbound adapters
