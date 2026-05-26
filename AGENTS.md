@@ -10,10 +10,17 @@ Do not organize by file type when ownership is product-specific.
 Organize by owned capability, keep adapters thin, keep durable truth in domain,
 and route infrastructure access through platform adapters.
 
+This framework is a default, not an override. If the project already has a
+coherent architecture, map these responsibilities onto the existing architecture
+instead of renaming folders.
+
 ## Before Editing
 
-1. Identify the user-visible or operator-visible capability.
-2. Identify every entrypoint involved:
+1. Inspect the existing architecture and naming conventions.
+2. Decide whether Capability Core + Adapters should be applied directly, mapped
+   onto existing names, or not used for this task.
+3. Identify the user-visible or operator-visible capability.
+4. Identify every entrypoint involved:
    - route/page/server action/loader;
    - API handler;
    - bot handler;
@@ -21,7 +28,7 @@ and route infrastructure access through platform adapters.
    - CLI/script;
    - desktop/mobile bridge;
    - MCP tool.
-3. Identify durable state and authority:
+5. Identify durable state and authority:
    - database rows;
    - external APIs;
    - sessions;
@@ -29,10 +36,12 @@ and route infrastructure access through platform adapters.
    - permissions;
    - jobs/events;
    - generated recommendations or derived statuses.
-4. Identify the current source of truth before moving code.
+6. Identify the current source of truth before moving code.
 
 If the source of truth is unclear, stop broad refactoring. Make the slice
 narrower or write a capability contract first.
+
+If the only change would be folder renaming, do not proceed.
 
 ## Layer Rules
 
@@ -253,6 +262,7 @@ Before claiming completion:
 - "Server action is backend enough."
 - "We will extract later" with no boundary.
 - "This status is only UI" when it affects user trust or authority.
+- "This repo already has an architecture, but I will replace it anyway."
+- "The framework says this folder must exist."
 
 When a red flag appears, pause and re-run the placement decision tree.
-

@@ -3,6 +3,9 @@
 Use this playbook to introduce Capability Core + Adapters into an existing
 project without a disruptive rewrite.
 
+The framework is a default for projects without a better system. Adoption should
+make ownership clearer, not create architecture theater.
+
 ## Adoption Modes
 
 ### Mode 1: New Project
@@ -168,3 +171,13 @@ docs/capabilities/capital-allocation.md
 - no global folder reshuffle happened;
 - remaining risks are documented.
 
+## De-Adoption Checklist
+
+Stop or narrow adoption when:
+
+- the current architecture already answers the ownership question;
+- a proposed migration touches unrelated code;
+- a capability cannot name its source of truth;
+- the only benefit is nicer folder names;
+- tests would not prove behavior after the move;
+- contributors cannot explain the new boundary in product language.

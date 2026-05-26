@@ -43,6 +43,18 @@ The usual choices are bad:
 
 Capability Core + Adapters is the middle path.
 
+## Philosophy
+
+This is a sane default, not a universal law.
+
+Use it when a project has no clear architecture, when entrypoints are starting
+to multiply, or when agents and humans need a shared decision framework. If a
+team already has a coherent architecture that explains ownership, source of
+truth, and boundaries, keep it. Borrow only the parts that clarify the work.
+
+The framework should make systems easier to change. If it creates ceremony
+without improving ownership, it is being applied incorrectly.
+
 ## The Model
 
 ```txt
@@ -142,12 +154,25 @@ Use it when:
 Do not use it as an excuse for a global folder reshuffle. Apply it one
 capability at a time.
 
+## When Not To Use It
+
+Do not force this framework when:
+
+- the project already has a clear architecture with working boundaries;
+- the codebase is a small throwaway script or prototype;
+- the real problem is domain discovery, not code organization;
+- the team needs a specialized architecture for safety, regulation,
+  performance, or distributed systems;
+- applying the framework would only rename folders without changing ownership.
+
 ## Documentation
 
 - [Framework](docs/framework.md)
 - [Full-stack boundaries](docs/full-stack-boundaries.md)
 - [Decision guide](docs/decision-guide.md)
 - [Adoption playbook](docs/adoption-playbook.md)
+- [Limits and failure modes](docs/limits-and-failure-modes.md)
+- [Method fit checklist](docs/method-fit-checklist.md)
 - [Agent skill pack](docs/skill-pack.md)
 - [Comparison with related patterns](docs/comparison.md)
 
@@ -186,4 +211,3 @@ queries, but it does not get to invent a new copy of the business logic.
 ## License
 
 MIT. Use it, fork it, adapt it, and improve it.
-

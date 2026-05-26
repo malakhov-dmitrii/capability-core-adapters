@@ -9,6 +9,9 @@ It deliberately avoids two failure modes:
 - frontend-only feature slicing that ignores backend authority;
 - heavyweight architecture ceremony before the product needs it.
 
+It is meant to be a sane default when a project has no better architecture. It
+is not meant to replace a coherent architecture that already works.
+
 ## Core Sentence
 
 Many entrypoints. One capability core. Domain owns truth. Adapters stay thin.
@@ -124,6 +127,25 @@ Shared owns primitives:
 
 Shared must not become a hiding place for unclear product semantics.
 
+## Adoption Principle
+
+Adopt the framework by strengthening ownership, not by renaming folders.
+
+Good adoption:
+
+- a route becomes thinner;
+- a bot and a web route call the same command;
+- a job stops bypassing a domain invariant;
+- a shared component is split into visual shell and semantic wrappers;
+- a capability contract clarifies source of truth.
+
+Bad adoption:
+
+- folders are renamed without behavior moving;
+- empty layers are created;
+- existing coherent architecture is replaced without a concrete pain;
+- every small UI piece becomes a capability.
+
 ## Default Flow
 
 ```txt
@@ -211,6 +233,23 @@ Every capability that displays or mutates important derived state must answer:
 If this cannot be answered, keep implementation narrow or write a capability
 contract first.
 
+## Default, Not Mandate
+
+Use this framework as:
+
+- a starting point for projects with no structure;
+- a review lens for messy full-stack boundaries;
+- a migration target for one active capability at a time;
+- an agent instruction set for safer default behavior.
+
+Do not use it as:
+
+- a universal folder tree;
+- a reason to rewrite stable code;
+- a microservices strategy;
+- a substitute for domain discovery;
+- a way to avoid stack-specific best practices.
+
 ## Anti-Patterns
 
 - route handlers containing business rules;
@@ -235,4 +274,3 @@ A slice follows this framework when:
 - shared code is genuinely primitive;
 - tests exercise command/query/domain behavior directly;
 - user-visible status can explain its source and degraded states.
-

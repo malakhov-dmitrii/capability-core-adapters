@@ -2,6 +2,9 @@
 
 Use this guide when it is unclear where code belongs.
 
+First ask whether this project already has a clear architecture. If it does,
+adapt the decision rules to that architecture instead of replacing it.
+
 ## Placement Decision Tree
 
 Ask in order.
@@ -145,3 +148,19 @@ Write or update a capability contract when:
 
 Use [the template](../templates/capability-contract.md).
 
+## Existing Architecture Override
+
+If the project already has a coherent architecture, do not force these names.
+Map the responsibilities instead:
+
+```txt
+app/inbound adapter  -> existing controllers/routes/handlers
+capability           -> existing use cases/application services/features
+domain               -> existing domain/model/policy modules
+contracts            -> existing schemas/protos/API/event packages
+platform             -> existing infrastructure/adapters/integrations
+shared               -> existing primitives/design-system/common utilities
+```
+
+Keep the existing names when they are clear. Change names only when the current
+names hide ownership.

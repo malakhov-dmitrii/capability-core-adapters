@@ -11,6 +11,10 @@ The goal is not to rename folders. The goal is to preserve ownership as a
 product grows from one full-stack app into multiple entrypoints: web, API, bot,
 worker, cron, MCP, desktop, mobile, and scripts.
 
+Use this as a sane default when the project has no clearer architecture. If the
+project already has coherent boundaries, map this framework onto the existing
+terms instead of replacing them.
+
 ## Core Rule
 
 Many entrypoints. One capability core. Domain owns truth. Adapters stay thin.
@@ -18,27 +22,30 @@ Contracts define deployable boundaries. Platform owns infrastructure.
 
 ## Workflow
 
-1. Identify the capability in product language.
-2. Map every entrypoint that touches it:
+1. Inspect existing architecture and naming conventions.
+2. Decide whether to apply directly, map onto existing names, or avoid using
+   the framework for this task.
+3. Identify the capability in product language.
+4. Map every entrypoint that touches it:
    - route, page, server action, loader, API handler;
    - bot handler;
    - job, cron, queue, worker;
    - CLI, script, MCP, desktop, mobile bridge.
-3. Identify durable truth:
+5. Identify durable truth:
    - money, permissions, sessions, booking, external state, generated status,
      reconciliation, automation authority, or shared lifecycle.
-4. Classify code by responsibility:
+6. Classify code by responsibility:
    - app/inbound adapter;
    - capability command/query/workflow;
    - domain rule/invariant;
    - contract;
    - platform adapter;
    - shared primitive.
-5. Keep behavior in commands/queries/workflows, not in entrypoints.
-6. Keep durable truth in domain, not UI, route handlers, bot handlers, or jobs.
-7. Keep SDK/database calls in platform adapters unless the app itself is the
+7. Keep behavior in commands/queries/workflows, not in entrypoints.
+8. Keep durable truth in domain, not UI, route handlers, bot handlers, or jobs.
+9. Keep SDK/database calls in platform adapters unless the app itself is the
    platform boundary.
-8. Promote code upward only when the reason to change is genuinely shared.
+10. Promote code upward only when the reason to change is genuinely shared.
 
 ## Placement Decision Tree
 
@@ -73,15 +80,16 @@ Ask in order:
 For existing projects:
 
 1. Do not perform global folder reshuffles.
-2. Choose one active capability.
-3. Lock behavior with focused tests or an executable reproduction.
-4. Thin the adapter first.
-5. Extract command/query/workflow behavior.
-6. Move durable rules to domain.
-7. Move concrete infrastructure calls to platform.
-8. Add contracts only when there is a second deployable, public API, async job
+2. Preserve existing coherent architecture.
+3. Choose one active capability.
+4. Lock behavior with focused tests or an executable reproduction.
+5. Thin the adapter first.
+6. Extract command/query/workflow behavior.
+7. Move durable rules to domain.
+8. Move concrete infrastructure calls to platform.
+9. Add contracts only when there is a second deployable, public API, async job
    payload, or external consumer.
-9. Verify every relevant entrypoint still goes through the same path.
+10. Verify every relevant entrypoint still goes through the same path.
 
 ## When To Create A Capability Contract
 
@@ -101,4 +109,3 @@ write or review the contract.
 
 Load `references/framework-cheatsheet.md` when you need compact terminology,
 examples, or a summary to copy into project docs.
-

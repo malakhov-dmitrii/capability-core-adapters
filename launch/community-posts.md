@@ -6,6 +6,9 @@ I published Capability Core + Adapters, a practical architecture framework for
 apps that start as one full-stack product and later grow APIs, bots, jobs,
 workers, MCP tools, scripts, mobile, or desktop clients.
 
+It is intended as a sane default when a project has no better architecture yet,
+not as a replacement for systems with working boundaries.
+
 Core idea:
 
 ```txt
@@ -34,7 +37,9 @@ Capability Core + Adapters is my attempt to make that transition explicit:
 entrypoints are adapters, capabilities own workflows, domain owns truth, and
 platform owns infrastructure.
 
-The repo includes docs, examples, templates, and optional agent skills.
+The repo includes docs, examples, templates, optional agent skills, and now a
+limits/failure-modes section so the framework does not pretend to solve every
+architecture problem.
 
 ## Agent Community Post
 
@@ -44,6 +49,9 @@ coding agents.
 The goal is to stop agents from putting business logic into whatever file they
 happen to touch first: route handlers, server actions, bot handlers, jobs, or
 random scripts.
+
+The skill also tells agents to inspect existing architecture first and not force
+this framework when the project already has coherent boundaries.
 
 The skill asks the agent to identify:
 
@@ -58,4 +66,3 @@ The skill asks the agent to identify:
 
 Then it pushes implementation toward thin adapters and shared command/query
 behavior.
-
