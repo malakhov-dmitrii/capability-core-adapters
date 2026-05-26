@@ -16,14 +16,17 @@ is not meant to replace a coherent architecture that already answers the ownersh
 
 Use this as the operating rule for projects that adopt the framework:
 
-```txt
-Many entrypoints.
-One capability core.
-Domain owns truth.
-Adapters stay thin.
-Contracts define boundaries.
-Platform owns infrastructure.
-```
+- entrypoints are adapters;
+- capabilities own commands, queries, workflows, and view models;
+- domain owns durable truth, lifecycle, authority, reconciliation, and
+  invariants;
+- contracts define deployable, public API, and async boundaries;
+- platform owns database, SDK, queue, auth, telemetry, and provider calls;
+- shared owns primitives with no product meaning.
+
+Agents should apply this rule after discovering the existing architecture. If
+the project already uses different names for the same responsibilities, keep the
+project names and map this rule onto them.
 
 ## Responsibility map
 
@@ -249,6 +252,11 @@ Use this framework as:
 - a review lens for messy full-stack boundaries;
 - a migration target for one active capability at a time;
 - an agent instruction set for safer default behavior.
+
+For agent-assisted work, use the routine in
+[agent-operating-model.md](agent-operating-model.md): discover, classify,
+contract, change, verify, and record. This routine is part of the framework, not
+an optional appendix.
 
 Do not use it as:
 

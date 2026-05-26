@@ -58,8 +58,12 @@ or any equivalent skill directory supported by your agent.
 For agents that read `AGENTS.md`, use the root [AGENTS.md](../AGENTS.md) or copy
 the relevant section from [templates/agents-snippet.md](../templates/agents-snippet.md).
 
+For multi-agent or long-running work, also read
+[Agent operating model](agent-operating-model.md). It explains the
+`discover -> classify -> contract -> change -> verify -> record` loop and the
+agent failure modes this framework is meant to prevent.
+
 ## Design principle
 
 Keep skills concise. Put stable reference material in docs. Do not make the
 skill pack the only place where the architecture is explained.
-

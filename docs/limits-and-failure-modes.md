@@ -8,6 +8,10 @@ duplicating business logic, or turning `shared` into a junk drawer.
 
 If it becomes ceremony, it has failed.
 
+This is a design proposal, not an empirical proof. A team should treat it as a
+candidate default, test it on one real slice, and keep stronger local rules when
+they exist.
+
 ## What the framework optimizes for
 
 It optimizes for:
@@ -142,6 +146,11 @@ Symptom:
 - agents impose this framework on a project with an existing system;
 - agents rename folders instead of fixing behavior;
 - agents create contracts for unclear work without checking source of truth.
+- agents patch the nearest route, job, bot handler, or script and miss the
+  shared behavior path;
+- agents create a second command because they did not find the first one;
+- agents leave stale docs or contracts for the next agent.
+- agents obey an old contract after the product requirement has changed.
 
 Correction:
 
@@ -150,6 +159,11 @@ Correction:
 - agents should use this framework as a default only when the project lacks a
   better one;
 - agents must write capability contracts before risky cross-entrypoint work.
+- agents must follow `discover -> classify -> contract -> change -> verify ->
+  record` for behavior changes;
+- agents must report remaining bypass paths instead of hiding them.
+- when requirements change, agents must update contracts and tests instead of
+  treating old docs as final authority.
 
 ## Failure mode: microservice drift
 

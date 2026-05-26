@@ -15,39 +15,51 @@ Use this as a sane default when the project has no clearer architecture. If the
 project already has coherent boundaries, map this framework onto the existing
 terms instead of replacing them.
 
-## Core Rule
+## Core rule
 
-Many entrypoints. One capability core. Domain owns truth. Adapters stay thin.
-Contracts define deployable boundaries. Platform owns infrastructure.
+Use this placement rule when a project adopts the framework:
+
+- entrypoints are adapters;
+- capability commands, queries, and workflows own product behavior;
+- domain modules own durable rules, lifecycle, authority, and invariants;
+- contracts define deployable, public API, and async boundaries;
+- platform modules own database, SDK, queue, auth, and provider calls.
 
 ## Workflow
 
 1. Inspect existing architecture and naming conventions.
-2. Decide whether to apply directly, map onto existing names, or avoid using
+2. Search existing references before editing:
+   - root and local `README.md`, `AGENTS.md`, `CLAUDE.md`;
+   - architecture docs;
+   - `docs/capabilities/*`;
+   - commands, queries, workflows, modules, contexts;
+   - routes, API handlers, bot handlers, jobs, scripts, MCP tools;
+   - tests for the behavior.
+3. Decide whether to apply directly, map onto existing names, or avoid using
    the framework for this task.
-3. Identify the capability in product language.
-4. Map every entrypoint that touches it:
+4. Identify the capability in product language.
+5. Map every entrypoint that touches it:
    - route, page, server action, loader, API handler;
    - bot handler;
    - job, cron, queue, worker;
    - CLI, script, MCP, desktop, mobile bridge.
-5. Identify durable truth:
+6. Identify durable truth:
    - money, permissions, sessions, booking, external state, generated status,
      reconciliation, automation authority, or shared lifecycle.
-6. Classify code by responsibility:
+7. Classify code by responsibility:
    - app/inbound adapter;
    - capability command/query/workflow;
    - domain rule/invariant;
    - contract;
    - platform adapter;
    - shared primitive.
-7. Keep behavior in commands/queries/workflows, not in entrypoints.
-8. Keep durable truth in domain, not UI, route handlers, bot handlers, or jobs.
-9. Keep SDK/database calls in platform adapters unless the app itself is the
+8. Keep behavior in commands/queries/workflows, not in entrypoints.
+9. Keep durable truth in domain, not UI, route handlers, bot handlers, or jobs.
+10. Keep SDK/database calls in platform adapters unless the app itself is the
    platform boundary.
-10. Promote code upward only when the reason to change is genuinely shared.
+11. Promote code upward only when the reason to change is genuinely shared.
 
-## Placement Decision Tree
+## Placement decision tree
 
 Ask in order:
 
@@ -71,7 +83,7 @@ Ask in order:
 - Same visual shape, different semantics: share only the visual shell.
 - Same business rule, different UI: move the rule to domain.
 - Same workflow from several entrypoints: move it to a capability command/query.
-- Same external system from many places: move SDK access to platform.
+- Same external system from several call sites: move SDK access to platform.
 - Same data crosses deployables: put schema in contracts.
 - Similar but different reason to change: duplicate intentionally.
 
@@ -91,7 +103,19 @@ For existing projects:
    payload, or external consumer.
 10. Verify every relevant entrypoint still goes through the same path.
 
-## When To Create A Capability Contract
+## Agent failure check
+
+Before finishing, check for:
+
+- route, bot, job, script, API, or MCP path still bypassing the command/query;
+- product-specific logic placed in shared;
+- domain rules left in UI or handler code;
+- concrete SDK/database calls scattered across capabilities;
+- capability contract missing or stale;
+- tests that prove only one entrypoint while behavior is shared;
+- new abstraction created without finding existing behavior first.
+
+## When to create a capability contract
 
 Create a contract when:
 
@@ -109,3 +133,6 @@ write or review the contract.
 
 Load `references/framework-cheatsheet.md` when you need compact terminology,
 examples, or a summary to copy into project docs.
+
+Read `docs/agent-operating-model.md` in the repository when the task involves
+agent instructions, multi-entrypoint behavior, or preventing codebase drift.

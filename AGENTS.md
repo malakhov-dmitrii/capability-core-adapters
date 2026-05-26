@@ -1,9 +1,9 @@
-# Agent Protocol: Capability Core + Adapters
+# Agent protocol: Capability Core + Adapters
 
 This file is for coding agents applying Capability Core + Adapters in a project.
 It is intentionally procedural.
 
-## Prime Directive
+## Prime directive
 
 Do not organize by file type when ownership is product-specific.
 
@@ -14,7 +14,7 @@ This framework is a default, not an override. If the project already has a
 coherent architecture, map these responsibilities onto the existing architecture
 instead of renaming folders.
 
-## Before Editing
+## Before editing
 
 1. Inspect the existing architecture and naming conventions.
 2. Decide whether Capability Core + Adapters should be applied directly, mapped
@@ -43,9 +43,59 @@ narrower or write a capability contract first.
 
 If the only change would be folder renaming, do not proceed.
 
-## Layer Rules
+## Agent operating loop
 
-### Apps / Inbound Adapters
+For behavior changes, follow:
+
+```txt
+discover -> classify -> contract -> change -> verify -> record
+```
+
+### Discover
+
+Find current references before editing:
+
+- root and local `README.md`, `AGENTS.md`, `CLAUDE.md`;
+- architecture docs;
+- `docs/capabilities/*`;
+- existing commands, queries, workflows, modules, services, contexts;
+- all entrypoints touching the behavior;
+- tests and fixtures for the behavior;
+- source-of-truth and platform adapters.
+
+### Classify
+
+Map the task to the project's existing names. Do not force folder names when the
+project already has clear equivalents.
+
+### Contract
+
+Create or update a capability contract when entrypoints, authority, source of
+truth, lifecycle, degraded states, commands, queries, jobs, or public boundaries
+change.
+
+If the user request changes product behavior, update the contract and tests that
+describe the old behavior. Do not patch one entrypoint around a stale contract.
+When docs, tests, code, and the request disagree, record the conflict instead of
+hiding it.
+
+### Change
+
+Make the smallest useful intervention. Prefer reusing or extracting one
+command/query over copying behavior into another entrypoint.
+
+### Verify
+
+Prove the shared behavior and at least one touched adapter path.
+
+### Record
+
+Leave the updated contract, test evidence, remaining bypass paths, and known
+risks in the final report.
+
+## Layer rules
+
+### Apps / inbound adapters
 
 Allowed:
 
@@ -146,7 +196,7 @@ Not allowed:
 - unclear business status components;
 - helper functions that only one capability truly owns.
 
-## Import Direction
+## Import direction
 
 Default direction:
 
@@ -177,7 +227,7 @@ If one capability needs another, prefer one of:
 - an event or job contract;
 - a shared platform adapter.
 
-## Placement Decision Tree
+## Placement decision tree
 
 Use this exact order.
 
@@ -196,7 +246,7 @@ Use this exact order.
 7. Still unclear?
    - Keep it local to the capability that needs it first. Do not promote early.
 
-## Reuse Decision Tree
+## Reuse decision tree
 
 1. Same visual shape, different semantics:
    - share only the visual shell.
@@ -206,14 +256,14 @@ Use this exact order.
    - keep UI local.
 3. Same workflow from several entrypoints:
    - move workflow to capability command/query.
-4. Same external system from many places:
+4. Same external system from several call sites:
    - move concrete SDK access to platform.
 5. Same data crossing deployables:
    - move schema/type to contracts.
 6. Similar but different reason to change:
    - duplicate intentionally.
 
-## Capability Contract Trigger
+## Capability contract trigger
 
 Create or update a capability contract when any of these are true:
 
@@ -228,7 +278,7 @@ Create or update a capability contract when any of these are true:
 
 Use `templates/capability-contract.md`.
 
-## Implementation Protocol
+## Implementation protocol
 
 1. Map current state.
 2. Write or update tests around current behavior.
@@ -239,7 +289,7 @@ Use `templates/capability-contract.md`.
 7. Add or update contracts if boundaries cross deployables.
 8. Verify every entrypoint still calls the same behavior.
 
-## Verification Checklist
+## Verification checklist
 
 Before claiming completion:
 
@@ -251,8 +301,10 @@ Before claiming completion:
 - no product-specific logic was moved into generic shared;
 - no domain code imports framework or SDK objects;
 - degraded/stale/error states are tested when relevant.
+- capability contracts reflect changed entrypoints and authority;
+- remaining direct route/job/bot/script bypass paths are listed.
 
-## Red Flags
+## Red flags
 
 - "This is just a route handler."
 - "The bot can update the DB directly."
@@ -264,5 +316,8 @@ Before claiming completion:
 - "This status is only UI" when it affects user trust or authority.
 - "This repo already has an architecture, but I will replace it anyway."
 - "The framework says this folder must exist."
+- "I only need to fix this one handler."
+- "I could not find the command, so I made another one."
+- "The script is temporary, so it can bypass the workflow."
 
 When a red flag appears, pause and re-run the placement decision tree.

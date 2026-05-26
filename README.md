@@ -55,6 +55,35 @@ repair script  /
 The point is not the folder names. The point is that every entrypoint stops
 inventing its own version of the behavior.
 
+## Why this matters for agents
+
+Coding agents make this drift faster when the project does not tell them where
+behavior belongs.
+
+Common agent failures:
+
+```txt
+agent sees route file      -> adds business logic there
+agent sees shared folder   -> adds product-specific helper there
+agent sees failing job     -> patches job path only
+agent lacks context        -> creates a second command instead of finding the first
+agent follows stale docs   -> preserves the wrong boundary
+```
+
+This framework gives agents a retrieval and placement routine:
+
+```txt
+1. find existing architecture and capability docs
+2. name the capability and entrypoints
+3. locate source of truth and authority
+4. reuse or extract the command/query path
+5. update the capability contract when behavior changes
+6. verify every touched entrypoint
+```
+
+The goal is not to make agents more autonomous. The goal is to make their
+default move less destructive.
+
 ## What is being compared
 
 | Approach | Good at | Breaks down when |
@@ -82,6 +111,22 @@ ceremony without clarifying ownership, narrow the effort or stop.
 This posture is aligned with small-step, behavior-preserving refactoring and
 avoid-hasty-abstraction guidance: change one concrete slice, test it, and avoid
 promoting abstractions before the reason to change is clear.
+
+## Evidence boundary
+
+This repository is a design proposal and operating checklist. It is not a
+benchmark, a formal study, or proof that one structure fits every codebase.
+
+The claims here are intentionally narrower:
+
+- the repo defines a vocabulary for entrypoints, capabilities, domain,
+  contracts, platform, and shared primitives;
+- the docs give placement rules for humans and agents;
+- the examples show common drift patterns and one way to correct them;
+- the method should be adopted only when it clarifies ownership in a real slice.
+
+If a team already has stronger local evidence or a better architecture, that
+local system wins.
 
 ## The model
 
@@ -241,6 +286,7 @@ Do not force this framework when:
 
 - [Getting started](docs/getting-started.md)
 - [Problem map](docs/problem-map.md)
+- [Agent operating model](docs/agent-operating-model.md)
 - [Framework](docs/framework.md)
 - [Full-stack boundaries](docs/full-stack-boundaries.md)
 - [Decision guide](docs/decision-guide.md)

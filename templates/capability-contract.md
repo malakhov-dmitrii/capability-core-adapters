@@ -4,7 +4,7 @@
 
 What user, operator, or business ability does this capability provide?
 
-## Current Entry Points
+## Current entry points
 
 List every way this capability is invoked:
 
@@ -137,4 +137,3 @@ What can still go wrong?
 ## Non-Goals
 
 What this capability explicitly does not own.
-

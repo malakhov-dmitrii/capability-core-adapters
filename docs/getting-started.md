@@ -206,8 +206,12 @@ Use this prompt with a coding agent:
 ```txt
 Apply Capability Core + Adapters to one active capability only.
 
-First inspect the existing architecture. If it already has coherent boundaries,
-map the framework onto existing names instead of renaming folders.
+Follow this loop: discover -> classify -> contract -> change -> verify -> record.
+
+First inspect existing README/AGENTS/CLAUDE files, architecture docs,
+capability contracts, commands, queries, workflows, entrypoints, tests, and
+source-of-truth code. If the project already has coherent boundaries, map the
+framework onto existing names instead of renaming folders.
 
 Pick the smallest useful intervention:
 - thin one adapter;
@@ -218,7 +222,7 @@ Pick the smallest useful intervention:
 
 Write or update a capability contract before touching broad behavior.
 Do not perform a global folder reshuffle.
-Verify with focused tests and report remaining risks.
+Verify with focused tests, list remaining bypass paths, and report known risks.
 ```
 
 ## Success criteria
