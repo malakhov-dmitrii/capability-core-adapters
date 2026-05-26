@@ -63,6 +63,17 @@ Find current references before editing:
 - tests and fixtures for the behavior;
 - source-of-truth and platform adapters.
 
+When `context-mode` tools are available, use them for broad repo inspection,
+large command output, indexed session context, and large external docs. Keep
+direct file reads for exact inspection before editing.
+
+When `CodeGraph` tools are available and the project is indexed, use them for
+symbol lookup, feature-area context, callers, callees, and impact checks before
+editing shared commands, domain rules, platform adapters, or contracts.
+
+Retrieval tools support discovery. They do not replace capability contracts,
+tests, or source-of-truth decisions.
+
 ### Classify
 
 Map the task to the project's existing names. Do not force folder names when the

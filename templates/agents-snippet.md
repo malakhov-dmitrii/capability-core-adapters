@@ -62,3 +62,16 @@ instead of silently patching one entrypoint.
 The default agent move is to reuse or extract a shared command/query path. Do
 not copy business behavior into a new route, bot handler, job, MCP tool, or
 script.
+
+## Optional retrieval tools
+
+If `context-mode` is available, use it for broad repo inspection, large command
+output, indexed session context, and large external docs. Keep direct file reads
+for exact inspection before editing.
+
+If `CodeGraph` is available and the project is indexed, use it for symbol
+lookup, feature-area context, callers, callees, and impact checks before editing
+shared commands, domain rules, platform adapters, or contracts.
+
+Retrieval tools support discovery. They do not replace capability contracts,
+tests, or source-of-truth decisions.

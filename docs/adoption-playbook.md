@@ -150,6 +150,7 @@ Add these files to projects adopting the framework:
 docs/architecture/capability-core-adapters.md
 docs/architecture/capability-contract-template.md
 docs/architecture/agent-operating-model.md
+docs/architecture/agent-tooling.md
 AGENTS.md or .codex/agents/capability-core-adapters.md
 ```
 
@@ -166,6 +167,7 @@ docs/capabilities/capital-allocation.md
 - framework document added;
 - agent protocol added;
 - agent operating loop added to project guidance;
+- optional retrieval-tool guidance added when the project needs it;
 - first capability contract written;
 - one real slice migrated or created;
 - tests cover command/query behavior;

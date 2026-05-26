@@ -136,3 +136,7 @@ examples, or a summary to copy into project docs.
 
 Read `docs/agent-operating-model.md` in the repository when the task involves
 agent instructions, multi-entrypoint behavior, or preventing codebase drift.
+
+Read `docs/agent-tooling.md` when the project uses `context-mode`, `CodeGraph`,
+or similar retrieval tools. Use those tools for discovery and impact checks, not
+as a replacement for ownership decisions, contracts, or tests.

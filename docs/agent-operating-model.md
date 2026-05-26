@@ -9,6 +9,10 @@ route, helper, job, or component, and the next agent inherits a weaker boundary.
 
 This document defines the agent routine the framework expects.
 
+For projects that need stronger retrieval, pair this routine with
+[agent-tooling.md](agent-tooling.md). Tooling is optional. The ownership model
+must still work when no special tools are installed.
+
 ## The agent problem
 
 Typical drift:
@@ -235,6 +239,8 @@ a service. Service extraction is an operations decision, not a folder decision.
 - Do not put durable truth in UI, route, bot, or job code.
 - Do not promote code to shared because it looks similar.
 - Do not ignore an existing architecture that already answers ownership.
+- Do not treat `context-mode`, `CodeGraph`, grep, or any index as the source of
+  truth.
 - Do not finish without verification evidence.
 
 ## Agent prompt

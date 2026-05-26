@@ -63,6 +63,11 @@ For multi-agent or long-running work, also read
 `discover -> classify -> contract -> change -> verify -> record` loop and the
 agent failure modes this framework is meant to prevent.
 
+For projects using context-oriented or graph-oriented retrieval tools, also read
+[Agent tooling](agent-tooling.md). It describes how `context-mode` and
+`CodeGraph` support discovery and impact checks without becoming architecture
+authority.
+
 ## Design principle
 
 Keep skills concise. Put stable reference material in docs. Do not make the

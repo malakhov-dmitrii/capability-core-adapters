@@ -287,6 +287,7 @@ Do not force this framework when:
 - [Getting started](docs/getting-started.md)
 - [Problem map](docs/problem-map.md)
 - [Agent operating model](docs/agent-operating-model.md)
+- [Agent tooling](docs/agent-tooling.md)
 - [Framework](docs/framework.md)
 - [Full-stack boundaries](docs/full-stack-boundaries.md)
 - [Decision guide](docs/decision-guide.md)
@@ -308,6 +309,7 @@ Do not force this framework when:
 - [Capability contract](templates/capability-contract.md)
 - [Adoption checklist](templates/adoption-checklist.md)
 - [Agent instructions snippet](templates/agents-snippet.md)
+- [Agent tooling block](templates/agent-tooling-block.md)
 - [Architecture decision record](templates/adr.md)
 
 ## Optional agent skills
@@ -323,6 +325,18 @@ skills/
 
 The docs are the source of truth. Skills are thin entrypoints that help agents
 apply the framework consistently.
+
+## Optional agent tooling
+
+When discovery becomes expensive, the recommended tooling layer is:
+
+- [context-mode](https://github.com/mksglu/context-mode) for large-output
+  retrieval, indexed session context, and compact command analysis;
+- [CodeGraph](https://github.com/colbymchenry/codegraph) for symbol lookup,
+  structural code navigation, callers, callees, and impact checks.
+
+These tools support the agent loop; they do not replace capability contracts,
+tests, or source-of-truth decisions. See [Agent tooling](docs/agent-tooling.md).
 
 ## One-sentence rule
 

@@ -28,6 +28,8 @@ Use this checklist when introducing Capability Core + Adapters into a project.
 
 - [ ] Add framework docs.
 - [ ] Add agent protocol or AGENTS.md snippet.
+- [ ] Add optional agent-tooling block if the project uses context or graph
+      retrieval tools.
 - [ ] Add capability contract template.
 - [ ] Add first capability contract.
 - [ ] Document remaining legacy areas.
@@ -39,4 +41,3 @@ Use this checklist when introducing Capability Core + Adapters into a project.
 - [ ] Tests prove behavior at command/query/domain level.
 - [ ] Entrypoints no longer duplicate the same business logic.
 - [ ] Remaining risks are documented.
-
