@@ -1,56 +1,166 @@
-# Hacker news launch draft
+# Hacker News launch plan
 
-## Title options
+## Ground rules
 
-- Capability Core + Adapters: feature slicing for systems that outgrow one UI
-- Show HN: Capability Core + Adapters, a practical architecture guide for growing apps
-- A small architecture framework for apps that become APIs, bots, jobs, and workers
-- A sane default architecture for apps before they have a better one
+Use Hacker News for critique, not promotion.
 
-## Post
+Official constraints to respect:
 
-I put together a small architecture framework called Capability Core + Adapters.
+- [Show HN](https://news.ycombinator.com/showhn.html) is for work people can
+  try and discuss. Reading material should be a regular submission, not Show HN.
+- The same page says not to ask friends to upvote or comment.
+- [HN guidelines](https://news.ycombinator.com/newsguidelines.html) say not to
+  use HN primarily for promotion.
+- HN guidelines also say not to post generated or AI-edited comments.
 
-It came out of a problem I kept running into: a product starts as a simple
-full-stack app, then adds a Telegram bot, background jobs, public APIs, MCP
-tools, scripts, desktop/mobile clients, and external integrations. The original
-feature folders or framework routes no longer explain ownership, but jumping
-straight to heavyweight Clean Architecture or microservices is usually too much.
+That means the repo needs a try path before posting:
 
-This is not meant to be a universal architecture or a replacement for a system
-that already works. It is a sane default for projects that do not yet have clear
-ownership rules, plus a checklist for deciding when not to apply it.
+1. open the repo;
+2. copy the agent snippet or workflow block;
+3. write one capability contract;
+4. run the first adoption checklist on one behavior.
 
-The operating rule in the repo is:
+If the README does not make that path obvious, submit as a regular link or wait.
 
-- entrypoints are adapters;
-- capability commands and queries own workflow behavior;
-- domain modules own durable rules;
-- contracts define deployable and async boundaries;
-- platform modules own infrastructure calls.
+## Recommended format
 
-The repo includes:
+Use `Show HN` only if the repo feels like a usable toolkit, not only an essay.
 
-- human-facing docs;
-- decision guides;
-- limits and failure modes;
-- method-fit checklist;
-- capability contract templates;
+Submit the GitHub repo directly.
+
+Preferred title:
+
+```txt
+Show HN: Capability Core + Adapters for agent-friendly app structure
+```
+
+Other acceptable titles:
+
+```txt
+Show HN: Capability Core + Adapters for apps with routes, bots, jobs, and APIs
+Show HN: Project structure for apps that outgrow one UI
+Show HN: Agent-friendly structure for multi-entrypoint apps
+```
+
+Avoid:
+
+```txt
+A sane default architecture for every growing app
+The future of agentic software architecture
+Feature-Sliced Design is not enough anymore
+```
+
+Those titles overclaim or start a fight before people open the repo.
+
+## Positioning
+
+Lead with the failure mode:
+
+```txt
+An app starts as one full-stack UI. Then it grows a bot, background jobs,
+public APIs, scripts, MCP tools, and maybe mobile or desktop clients.
+Humans and coding agents start patching the nearest route, handler, job, or
+helper. The same behavior now has several paths.
+```
+
+Then name the repo's answer:
+
+```txt
+Capability Core + Adapters tries to make ownership explicit:
+entrypoints are adapters, capabilities own workflows, domain owns durable truth,
+contracts define public/async/deployable boundaries, platform owns
+infrastructure, and shared owns primitives.
+```
+
+Then name what people can inspect:
+
+- docs;
 - examples;
-- optional SKILL.md packages for Claude Code/Codex-style agents.
+- capability contract template;
+- adoption checklist;
+- `AGENTS.md` snippet;
+- optional `SKILL.md` packages;
+- agent workflow and tooling guidance.
 
-The interesting part is not the folder tree. It is the ownership model:
+## First comment structure
 
-- routes/jobs/bots/scripts are adapters;
-- capabilities own workflows;
-- domain owns durable truth;
-- contracts own cross-deployable boundaries;
-- platform owns SDKs, DB, queues, auth, telemetry;
-- shared owns primitives only.
+Do not paste an AI-written comment into HN. Write it manually from this outline.
 
-Feedback I am looking for:
+1. One sentence: why this repo exists.
+2. One short paragraph: the concrete drift problem.
+3. One list: the ownership model.
+4. One list: what is in the repo.
+5. One sentence: what the repo is not.
+6. Four critique questions.
 
-- where does this break down in your stack?
-- what edge cases should the decision guide cover?
-- is the capability contract useful or too much ceremony?
-- where does the "sane default" become overreach?
+Use this as a checklist, not as copy:
+
+```txt
+- I built this after seeing route/job/bot/API paths diverge.
+- The agent angle matters because agents often edit the closest file.
+- The repo is a default for projects with no better boundary system.
+- It is not a microservices pitch and not a replacement for a working architecture.
+- I want criticism on failure modes, ceremony, capability contracts, and missing examples.
+```
+
+## Expected objections
+
+### clean architecture
+
+Answer:
+
+```txt
+It borrows the adapter/core distinction, but the repo is not trying to enforce a
+full Clean Architecture template. The narrower goal is a default placement and
+verification routine for apps that add bots, jobs, APIs, scripts, and agents.
+```
+
+### vertical slices
+
+Answer:
+
+```txt
+It is close in spirit. The difference is that the slice is not just a UI feature
+or route. The docs focus on shared behavior across entrypoints, source of truth,
+contracts, platform adapters, and agent instructions.
+```
+
+### ceremony
+
+Answer:
+
+```txt
+That is a valid failure mode. The repo says to use one active capability, avoid
+global reshuffles, skip contracts until a real boundary exists, and stop if the
+method does not clarify ownership.
+```
+
+### mostly docs
+
+Answer:
+
+```txt
+Fair pushback. The repo includes templates, examples, adoption checklist,
+AGENTS snippets, and optional skills that can be copied into a project. If that
+still reads as only an essay, a regular submission is a better fit.
+```
+
+## Pre-flight checklist
+
+- README has a visible try path.
+- The repo link opens without signup.
+- The first adoption example is easy to find.
+- The HN title does not overclaim.
+- The maintainer can answer comments for the next few hours.
+- No one is asked to upvote or comment.
+- First comment is written manually by the maintainer.
+
+## What not to do
+
+- Do not call it universal.
+- Do not frame it as a replacement for Clean Architecture, FSD, vertical slices,
+  or modular monoliths.
+- Do not use "AI agents" as a hype hook without explaining the file-placement
+  failure mode.
+- Do not argue with every objection.
+- Do not delete and repost because the first attempt was slow.
