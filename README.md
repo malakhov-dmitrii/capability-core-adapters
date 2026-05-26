@@ -45,15 +45,20 @@ Capability Core + Adapters is the middle path.
 
 ## Philosophy
 
-This is a sane default, not a universal law.
+This repository presents Capability Core + Adapters as a sane default, not a
+universal law.
 
 Use it when a project has no clear architecture, when entrypoints are starting
 to multiply, or when agents and humans need a shared decision framework. If a
 team already has a coherent architecture that explains ownership, source of
 truth, and boundaries, keep it. Borrow only the parts that clarify the work.
 
-The framework should make systems easier to change. If it creates ceremony
-without improving ownership, it is being applied incorrectly.
+Use the framework only while it clarifies ownership. If adoption creates
+ceremony without clarifying ownership, narrow the effort or stop.
+
+This posture is aligned with small-step, behavior-preserving refactoring and
+avoid-hasty-abstraction guidance: change one concrete slice, test it, and avoid
+promoting abstractions before the reason to change is clear.
 
 ## The Model
 
@@ -119,12 +124,13 @@ packages/
   ui/
 ```
 
-Start local. Promote only when the reason to change is genuinely shared.
+The recommended adoption path is local first. Promote code only when the reason
+to change is genuinely shared.
 
 ## What Makes This Different
 
-Capability Core + Adapters is not "Feature-Sliced Design for the backend" and
-not a strict Clean Architecture template.
+This repo does not present Capability Core + Adapters as "Feature-Sliced Design
+for the backend" or as a strict Clean Architecture template.
 
 It is an ownership framework:
 
@@ -167,6 +173,7 @@ Do not force this framework when:
 
 ## Documentation
 
+- [Getting started](docs/getting-started.md)
 - [Framework](docs/framework.md)
 - [Full-stack boundaries](docs/full-stack-boundaries.md)
 - [Decision guide](docs/decision-guide.md)
@@ -181,6 +188,7 @@ Do not force this framework when:
 - [Next BFF to multi-entrypoint](examples/01-next-bff-to-multi-entrypoint/README.md)
 - [Shared UI, different semantics](examples/02-shared-ui-different-semantics/README.md)
 - [Backend-heavy service](examples/03-backend-heavy-service/README.md)
+- [First adoption run](examples/04-first-adoption-run/README.md)
 
 ## Templates
 
@@ -207,6 +215,12 @@ apply the framework consistently.
 
 Every new entrypoint is an adapter. It may call existing capability commands and
 queries, but it does not get to invent a new copy of the business logic.
+
+## Further Reading
+
+- [Martin Fowler: Refactoring](https://refactoring.com/)
+- [Kent C. Dodds: AHA Programming](https://kentcdodds.com/blog/aha-programming)
+- [Sandi Metz: The Wrong Abstraction](https://sandimetz.com/blog/2016/1/20/the-wrong-abstraction)
 
 ## License
 
