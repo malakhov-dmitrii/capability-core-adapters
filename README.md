@@ -1,47 +1,70 @@
 # Capability Core + Adapters
 
-**A practical architecture framework for products that start small and grow into
-multi-client, backend-heavy systems without tearing themselves apart.**
+**A default structure for projects where one behavior starts being used by web
+routes, API handlers, bots, jobs, scripts, MCP tools, mobile apps, or desktop
+apps.**
 
-Capability Core + Adapters takes the useful part of feature slicing and extends
-it past the frontend. It gives teams and coding agents a shared way to organize
-Next.js, TanStack Start, Remix, API, bot, worker, MCP, CLI, mobile, and desktop
-code around durable product behavior.
+Capability Core + Adapters is for the moment when a project has outgrown
+"put the logic in the route" but does not need a microservice split or a heavy
+architecture template.
 
 ```txt
-Many entrypoints.
-One capability core.
-Domain owns truth.
-Adapters stay thin.
-Contracts define boundaries.
-Platform owns infrastructure.
+web route
+bot handler
+worker job       ->  one capability command/query  ->  domain rules  ->  platform adapters
+public API
+CLI script
 ```
 
 ## The problem
 
-Most projects begin simply:
+Example starting point:
 
 ```txt
-one web app + a few route handlers + a database
+web route -> validate input -> update db -> call provider -> return UI state
 ```
 
-Then reality arrives:
+That is fine until the same behavior gets another entrypoint:
 
-- a Telegram bot needs the same behavior as the web UI;
-- server actions grow into a backend-for-frontend;
-- Trigger.dev, cron, queues, and scripts start touching the same data;
-- a mobile app, desktop app, MCP server, or public API appears;
-- UI components look identical while their business semantics differ;
-- "shared" becomes a junk drawer for code nobody owns.
+```txt
+web route      -> validate input -> update db -> call provider -> return UI state
+bot handler    -> parse message  -> update db -> call provider -> return bot reply
+retry job      -> load failed row -> update db -> call provider -> mark status
+public API     -> validate JSON  -> update db -> call provider -> return JSON
+repair script  -> read ids       -> update db -> call provider -> print result
+```
 
-The usual choices are bad:
+Now several files can make the same business decision. They can drift:
 
-- keep everything in framework routes until it becomes unextractable;
-- introduce heavyweight Clean Architecture ceremony too early;
-- apply frontend-only feature slicing to backend authority problems;
-- split services before the domain is stable.
+- one path validates differently;
+- one path calls the provider directly;
+- one path writes a status the UI cannot explain;
+- one path bypasses retry or permission rules;
+- one shared component hides different business meanings.
 
-Capability Core + Adapters is the middle path.
+Capability Core + Adapters gives that behavior one owned path:
+
+```txt
+web route      \
+bot handler     \
+retry job        -> createBookingLink() -> booking policy -> provider/db adapters
+public API      /
+repair script  /
+```
+
+The point is not the folder names. The point is that every entrypoint stops
+inventing its own version of the behavior.
+
+## What is being compared
+
+| Approach | Good at | Breaks down when |
+| --- | --- | --- |
+| Framework routes only | Fast start in Next, TanStack Start, Remix, SvelteKit | Bot, job, API, or script needs the same behavior |
+| Frontend feature slicing | Organizing UI and client state | Durable backend truth and jobs need the same rules |
+| Shared utilities | Reusing primitives | Product semantics get hidden in `shared` |
+| Clean/Hexagonal Architecture | Strong boundaries | Too much ceremony for the first slice |
+| Microservices | Independent deployment and scaling | Domain ownership is not clear yet |
+| Capability Core + Adapters | One behavior path across entrypoints | Existing architecture already answers the ownership question |
 
 ## Philosophy
 
@@ -61,6 +84,28 @@ avoid-hasty-abstraction guidance: change one concrete slice, test it, and avoid
 promoting abstractions before the reason to change is clear.
 
 ## The model
+
+```mermaid
+flowchart LR
+  Web["web route / server action"]
+  API["public API / MCP tool"]
+  Bot["bot handler"]
+  Job["worker / cron / script"]
+
+  Command["capability command/query"]
+  Domain["domain rules"]
+  Platform["platform adapters"]
+  External["db / provider / queue / auth"]
+
+  Web --> Command
+  API --> Command
+  Bot --> Command
+  Job --> Command
+  Command --> Domain
+  Command --> Platform
+  Domain --> Command
+  Platform --> External
+```
 
 ```txt
 apps / inbound adapters
@@ -89,10 +134,31 @@ Default flow:
 inbound adapter -> capability command/query -> domain -> platform
 ```
 
-The web app, bot, public API, and worker may all call the same capability
-command. They should not each invent their own business logic.
+Use the same model at different sizes:
+
+```txt
+small app:
+  src/app -> src/capabilities -> src/domain -> src/platform
+
+monorepo:
+  apps/web, apps/bot, apps/worker -> packages/capabilities -> packages/domain
+
+backend-heavy system:
+  api, worker, bot, MCP -> modules/<bounded-context>/capabilities -> domain/platform
+```
 
 ## Quick start
+
+Try it on one behavior first.
+
+```txt
+1. Pick one capability in product language.
+2. List every entrypoint that touches it.
+3. Name the source of truth and authority.
+4. Extract one command/query or thin one adapter.
+5. Test the command/query/domain rule.
+6. Stop if the move does not clarify ownership.
+```
 
 For a small full-stack app:
 
@@ -174,6 +240,7 @@ Do not force this framework when:
 ## Documentation
 
 - [Getting started](docs/getting-started.md)
+- [Problem map](docs/problem-map.md)
 - [Framework](docs/framework.md)
 - [Full-stack boundaries](docs/full-stack-boundaries.md)
 - [Decision guide](docs/decision-guide.md)
